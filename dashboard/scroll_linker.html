@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scroll Linker Map</title>
+  <style>
+    body {
+      background-color: #0d1117;
+      color: #c9d1d9;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h1 { color: #58a6ff; }
+    pre {
+      background-color: #161b22;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>Vault Scroll Linker</h1>
+  <p>This map outlines which folders and drives correspond to each Scroll in the system.</p>
+  <pre id="json-content">Loading scroll map...</pre>
+  <script>
+    fetch('/vault_scroll_linker.json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('json-content').textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(err => {
+        document.getElementById('json-content').textContent = "Error loading scroll map: " + err;
+      });
+  </script>
+</body>
+</html>
