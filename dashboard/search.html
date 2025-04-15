@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scroll Role Search</title>
+  <style>
+    body { background:#0d1117; color:#c9d1d9; font-family:sans-serif; padding:2rem; }
+    input { width: 300px; padding: 8px; font-size: 16px; margin-bottom: 1rem; }
+    .result { background: #161b22; padding: 1rem; border-radius: 6px; margin-bottom: 1rem; }
+    h3 { margin: 0 0 0.5rem 0; color: #58a6ff; }
+  </style>
+</head>
+<body>
+  <h1>Search Scroll AI Roles</h1>
+  <input type="text" id="searchBox" placeholder="Try: automation, NFT, smart home..." />
+  <div id="results"></div>
+
+  <script>
+    const roles = {
+      "Scroll_001": ["Scene Triggering", "Biometric Input Processing", "Emotion-Linked Automation"],
+      "Scroll_002": ["Multi-Agent Orchestration", "Predictive Workflows", "Self-Healing Execution"],
+      "Scroll_003": ["Scroll Minting", "NFT Metadata Generator", "IP Rights Anchoring"]
+    };
+
+    const output = document.getElementById("results");
+    document.getElementById("searchBox").addEventListener("input", function() {
+      const q = this.value.toLowerCase();
+      output.innerHTML = "";
+      for (const scroll in roles) {
+        const matched = roles[scroll].filter(r => r.toLowerCase().includes(q));
+        if (matched.length > 0) {
+          const div = document.createElement("div");
+          div.className = "result";
+          div.innerHTML = `<h3>${scroll}</h3><ul>${matched.map(m => `<li>${m}</li>`).join("")}</ul>`;
+          output.appendChild(div);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
