@@ -3,23 +3,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>ScrollForge Dashboard</title>
+  <title>ScrollForge Vault Dashboard</title>
   <style>
     body {
       margin: 0; font-family: Arial, sans-serif;
       background-color: #0d1117; color: #c9d1d9;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      height: 100vh; text-align: center;
+      padding: 2rem;
     }
-    h1 { font-size: 3em; color: #58a6ff; }
+    h1 { font-size: 2.5rem; color: #58a6ff; }
     p { color: #8b949e; }
-    a { color: #58a6ff; text-decoration: underline; }
+    ul { margin-top: 1rem; list-style: none; padding: 0; }
+    li { margin-bottom: 1rem; }
+    a {
+      color: #58a6ff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <h1>ScrollForge Vault Dashboard</h1>
-  <p>This is the live dashboard entry point for Vault Grid intelligence.</p>
-  <p>Coming soon: scroll-linked metadata, live sync status, and secure IP layers.</p>
-  <p><a href="https://scrollforge.ai">← Back to Home</a></p>
+  <p>This is your live interface to the Scroll Grid. Select a module below to proceed:</p>
+  <ul>
+    <li><a href="scroll_linker.html">📂 Scroll Linker</a> — View folder & drive mapping across Scrolls</li>
+    <li><a href="scroll_timeline.html">📅 Scroll Timeline</a> — Track file changes over time</li>
+    <li><a href="search.html">🔍 AI Role Search</a> — Discover capabilities of each Scroll</li>
+    <li><a href="ai_log.html">🧠 AI Commentary</a> — System interpretation & guidance</li>
+  </ul>
+  <p><a href="https://scrollforge.ai">← Back to ScrollForge.ai Home</a></p>
 </body>
 </html>
