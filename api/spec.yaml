@@ -1,0 +1,37 @@
+
+openapi: 3.0.0
+info:
+  title: ScrollForge API
+  description: NFT-based scroll IP licensing and scroll metadata anchors
+  version: 0.1.0
+paths:
+  /api/scrolls:
+    get:
+      summary: List all scrolls
+      responses:
+        '200':
+          description: List of scrolls
+  /api/scrolls/{id}:
+    get:
+      summary: Get scroll metadata
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Scroll metadata object
+  /api/license/{id}:
+    post:
+      summary: Request scroll license contract
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: License created

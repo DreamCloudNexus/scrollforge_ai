@@ -1,0 +1,10 @@
+
+{
+  "name": "ScrollForge IP Licensing API",
+  "version": "0.1.0",
+  "routes": [
+    { "path": "/api/scrolls", "method": "GET", "description": "List available scrolls" },
+    { "path": "/api/scrolls/:id", "method": "GET", "description": "Retrieve scroll metadata" },
+    { "path": "/api/license/:id", "method": "POST", "description": "Request a scroll license contract" }
+  ]
+}
