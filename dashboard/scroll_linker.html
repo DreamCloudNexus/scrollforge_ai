@@ -12,28 +12,73 @@
       padding: 20px;
     }
     h1 { color: #58a6ff; }
-    pre {
+    .scroll {
       background-color: #161b22;
-      padding: 16px;
+      padding: 12px;
+      margin: 12px 0;
       border-radius: 8px;
-      overflow-x: auto;
-      white-space: pre-wrap;
     }
+    .scroll h2 { color: #79c0ff; margin-bottom: 4px; }
+    .scroll p { margin: 4px 0; }
+    .scroll ul { padding-left: 20px; }
   </style>
 </head>
 <body>
   <h1>Vault Scroll Linker</h1>
-  <p>This map outlines which folders and drives correspond to each Scroll in the system.</p>
-  <pre id="json-content">Loading scroll map...</pre>
+  <div id="scrolls"></div>
+
   <script>
-    fetch('/vault_scroll_linker.json')
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('json-content').textContent = JSON.stringify(data, null, 2);
-      })
-      .catch(err => {
-        document.getElementById('json-content').textContent = "Error loading scroll map: " + err;
-      });
+    const scrollData = {
+      "Scroll_001": {
+        "title": "Emotion-Aware Smart Home AI",
+        "folders": [
+          "OneDrive_Personal_01_Joseph",
+          "Google_Drive_Team_DCNexus",
+          "iCloud_Joseph",
+          "OneDrive_Biz_01_DreamCloud"
+        ],
+        "primary_machine": "exec-nuc14-alpha",
+        "domain": "Smart Home, Mood Automation, Adaptive Scenes",
+        "ai_roles": ["Scene Triggering", "Biometric Input Processing", "Emotion-Linked Automation"]
+      },
+      "Scroll_002": {
+        "title": "Execution Intelligence Engine",
+        "folders": [
+          "OneDrive_Biz_02_DevOpsExpertAI",
+          "Google_Drive_Team_DCNexus",
+          "OneDrive_Biz_01_DreamCloud",
+          "Scripts"
+        ],
+        "primary_machine": "exec-nuc14-alpha",
+        "domain": "DevOps AI, CI/CD, WebOps Automation",
+        "ai_roles": ["Multi-Agent Orchestration", "Predictive Workflows", "Self-Healing Execution"]
+      },
+      "Scroll_003": {
+        "title": "NFT-Based IP Licensing System",
+        "folders": [
+          "Google_Drive_Team_DCNexus",
+          "OneDrive_Biz_01_DreamCloud"
+        ],
+        "primary_machine": "exec-nuc14-alpha",
+        "domain": "Web3, Metadata Anchoring, IP Smart Contracts",
+        "ai_roles": ["Scroll Minting", "NFT Metadata Generator", "IP Rights Anchoring"]
+      }
+    };
+
+    const container = document.getElementById("scrolls");
+    for (const key in scrollData) {
+      const scroll = scrollData[key];
+      const div = document.createElement("div");
+      div.className = "scroll";
+      div.innerHTML = `
+        <h2>${key}: ${scroll.title}</h2>
+        <p><strong>Domain:</strong> ${scroll.domain}</p>
+        <p><strong>Primary Machine:</strong> ${scroll.primary_machine}</p>
+        <p><strong>Folders:</strong> <ul>${scroll.folders.map(f => `<li>${f}</li>`).join('')}</ul></p>
+        <p><strong>AI Roles:</strong> <ul>${scroll.ai_roles.map(r => `<li>${r}</li>`).join('')}</ul></p>
+      `;
+      container.appendChild(div);
+    }
   </script>
 </body>
 </html>
